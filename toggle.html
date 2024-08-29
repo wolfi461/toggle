@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .main {
+            cursor: pointer;
+            width: 60px;
+            height: 30px;
+            margin: 10px;
+        }
+
+        .back {
+            width: 100%;
+            height: 100%;
+            border-radius: 100px;
+
+        }
+
+        .circle {
+            position: relative;
+            top: 5%;
+            width: 45%;
+            height: 90%;
+            background-color: #fff;
+            border-radius: 100px;
+
+        }
+
+        .backoff {
+            animation-name: backoffanim;
+            animation-duration: 1s;
+            background-color: #ccc;
+        }
+
+        @keyframes backoffanim {
+            from {
+                background-color: #0af;
+            }
+
+            to {
+                background-color: #ccc;
+            }
+        }
+
+        .circleoff {
+            animation-name: circleoffanim;
+            animation-duration: 0.5s;
+            left: 2.5%;
+        }
+
+        @keyframes circleoffanim {
+            from {
+                left: 52.5%;
+            }
+
+            to {
+                left: 2.5%;
+            }
+        }
+
+        .backon {
+            animation-name: backonanim;
+            animation-duration: 1s;
+            background-color: #0af;
+        }
+
+        @keyframes backonanim {
+            from {
+                background-color: #ccc;
+            }
+
+            to {
+                background-color: #0af;
+            }
+        }
+
+        .circleon {
+            animation-name: circleonanim;
+            animation-duration: 0.5s;
+            left: 52.5%;
+        }
+
+        @keyframes circleonanim {
+            from {
+                left: 2.5%;
+            }
+
+            to {
+                left: 52.5%;
+            }
+        }
+    </style>
+
+    <script>
+        function toggle(t) {
+            if (t.querySelector('div').className == 'back backon') {
+                t.querySelector('div').className = 'back backoff';
+                t.querySelector('div').querySelector('div').className = 'circle circleoff';
+            }
+            else {
+                t.querySelector('div').className = 'back backon';
+                t.querySelector('div').querySelector('div').className = 'circle circleon';
+            }
+            usedata()
+        }
+
+        function usedata() {
+            let res = 'a = ';
+            if (document.getElementById('t1').querySelector('div').className == 'back backon') res += 'on ';
+            else res += 'off ';
+            res += '<br>b = ';
+            if (document.getElementById('t2').querySelector('div').className == 'back backon') res += 'on ';
+            else res += 'off ';
+            res += '<br>c = ';
+            if (document.getElementById('t3').querySelector('div').className == 'back backon') res += 'on ';
+            else res += 'off ';
+            res += '<br>d = ';
+            if (document.getElementById('t4').querySelector('div').className == 'back backon') res += 'on ';
+            else res += 'off ';
+            document.getElementById('out').innerHTML = res;
+        }
+
+
+
+    </script>
+
+</head>
+
+<body onload="usedata()">
+    <div class="main" id="t1" onclick="toggle(this)">
+        <div class="back backoff" id="a1">
+            <div class="circle circleoff" id="b1"></div>
+        </div>
+    </div>
+    <div class="main" id="t2" onclick="toggle(this)">
+        <div class="back backoff" id="a1">
+            <div class="circle circleoff" id="b1"></div>
+        </div>
+    </div>
+    <div class="main" id="t3" onclick="toggle(this)">
+        <div class="back backoff" id="a1">
+            <div class="circle circleoff" id="b1"></div>
+        </div>
+    </div>
+    <div class="main" id="t4" onclick="toggle(this)">
+        <div class="back backoff" id="a1">
+            <div class="circle circleoff" id="b1"></div>
+        </div>
+    </div>
+    <h1 id="out"></h1>
+</body>
+
+</html>
